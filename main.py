@@ -11,13 +11,7 @@ client = TelegramClient("session", api_id, api_hash)
 
 @client.on(events.NewMessage(chats=source_channel))
 async def handler(event):
-    try:
-        await client.send_message(target_channel, event.message)
-        print("Message forwarded")
-    except Exception as e:
-        print("Error:", e)
+    await client.send_message(target_channel, event.message)
 
-print("Bot is running...")
-
-client.start()
+client.start()  # دیگه لاگین نمیخواد
 client.run_until_disconnected()
